@@ -48,7 +48,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		PluginResult plresult = new PluginResult(PluginResult.Status.NO_RESULT);
 		try {
 			if(source.indexOf("www") != -1) {
-				myInput = myContext.getAssets().open("www/" + sqlDB.dbname);
+				myInput = myContext.getAssets().open(source+"/" + sqlDB.dbname);
 			} else {
 				File src = new File(source);
 				myInput = new FileInputStream(src);
@@ -76,7 +76,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				response.put("message", "DB Not Present in www folder");
 	            response.put("code", 400);
 				plresult = new PluginResult(PluginResult.Status.ERROR, response);
-	            callbackContext.sendPluginResult(plresult);    
+	            callbackContext.sendPluginResult(plresult);
             } catch (JSONException err1) {
 				throw new Error(err1.getMessage());
 			}
